@@ -2,6 +2,7 @@
 
 #include "nlohmann/json.hpp"
 #include <fstream>
+#include <iostream>
 
 // Constructor
 Dialogue::Dialogue()
@@ -19,17 +20,20 @@ void Dialogue::LoadDialogue(const std::string &filepath)
 {
     // Read JSON dialogue file
     std::ifstream jsdaFile(filepath);
-    if (!jsdaFile.is_open()) { return; } // TODO: Add proper error handling
+    if (!jsdaFile.fail()) {
+        std::cerr << filepath << "was not successfully opened.\n Please check that the file currently exists.\n";
+        exit(1);
+    }
 
     nlohmann::json jsonData;
 
     try { jsdaFile >> jsonData; }
-    catch (const nlohmann::json::parse_error &e)
-    {
+    catch (const nlohmann::json::parse_error &e) {
         jsdaFile.close();
-        return;
-    } // TODO: Add proper error handling
-
+        std::cerr << "JSON parse error: " << e.what() << "\n";
+        exit(1);
+    }
+    
     for (const auto &[nodeID, nodeData] : jsonData.items()) {
         DialogueNode dnode;
         dnode.character = nodeData["character"];
