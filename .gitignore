@@ -3,3 +3,5 @@
 build/
 
 DialogueSystem.code-workspace
+
+src/main.cpp
