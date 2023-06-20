@@ -23,6 +23,7 @@ struct Container
     Rectangle contBox;
     Rectangle textBox;
     Texture2D charImage;
+    Vector2 imagePosition;
 };
 
 class Dialogue
