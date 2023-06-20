@@ -152,16 +152,16 @@ void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing)
     std::string dialogueText = removedCharacters + " " + currentNode.dialogue;
     std::vector<std::string> lines;
 
-    const float maxLineLength = container.textBox.width - padding;
+    const int maxLength = static_cast<int>(container.textBox.width - padding);
     const int maxLines = static_cast<int>(container.textBox.height / padding);
 
-    if (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {
-        while (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {
+    if (MeasureText(dialogueText.c_str(), fontSize) > maxLength) {
+        while (MeasureText(dialogueText.c_str(), fontSize) > maxLength) {
             removedCharacters = dialogueText.substr(dialogueText.length() - 1) + removedCharacters;
             dialogueText = dialogueText.substr(0, dialogueText.length() - 1);
         }
         dialogueText += "...";
-    }
+    } else { removedCharacters.clear(); }
 
     //Draw truncated dialogue text
     //TODO: draw text
