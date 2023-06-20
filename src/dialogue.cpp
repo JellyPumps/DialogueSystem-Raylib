@@ -12,6 +12,7 @@ Dialogue::Dialogue()
 {
     currentNodeID   = -1;
     dialogueFinished= false;
+    removedCharacters = "";
 }
 
 // Deconstuctor
