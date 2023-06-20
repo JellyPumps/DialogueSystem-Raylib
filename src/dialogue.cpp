@@ -60,6 +60,18 @@ void Dialogue::SetContainerPosition(ContainerPosition position)
 
 void Dialogue::CalculateContainerSize()
 {
-    container.contBox.width = static_cast<int>(GetScreenWidth() * 0.675);  // 67.5% of the screen width
-    container.contBox.height = static_cast<int>(GetScreenHeight() * 0.2);  // 20% of the screen height
+    // Set containerX to be 67.5% of the screen width
+    container.contBox.width = static_cast<int>(GetScreenWidth() * 0.675);
+    // Set containerY to be 20% of the screen height
+    container.contBox.height = static_cast<int>(GetScreenHeight() * 0.2);
+}
+
+void Dialogue::SetImage(const Texture2D& imageTexture)
+{
+    container.charImage = imageTexture;
+
+    // Set imageX width to be 18.52% of container
+    container.charImage.width = static_cast<float>(container.contBox.width * 0.1852);
+    // Set imageY width to be 83.3% of container
+    container.charImage.height = static_cast<float>(container.contBox.height * 0.8333);
 }

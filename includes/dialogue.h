@@ -37,6 +37,7 @@ class Dialogue
         void ProcessInput();
         void SetContainerPosition(ContainerPosition position);
         void CalculateContainerSize();
+        void SetImage(const Texture2D& imageTexture);
     
     private:
         std::vector<DialogueNode> node;
