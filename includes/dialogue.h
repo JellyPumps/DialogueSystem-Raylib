@@ -35,8 +35,6 @@ class Dialogue
         void LoadDialogue(const std::string &filepath);
         void StartDialogue();
         void ProcessInput();
-        void SetContainerPosition(ContainerPosition position);
-        void SetImage(const Texture2D& imageTexture);
     
     private:
         std::vector<DialogueNode> node;
@@ -54,6 +52,9 @@ class Dialogue
 
         bool IsDialogueFinished() const;
         void CalculateContainerSize();
+        void SetContainerPosition(ContainerPosition position);
+        void CreateContainer(ContainerPosition position);
+        void CreateImage(const Texture2D& imageTexture);
         void CreateTextbox();
         void DrawDialogueText(const int fontSize, const int fontSpacing);
 };

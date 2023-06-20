@@ -110,7 +110,7 @@ void Dialogue::CalculateContainerSize()
     container.contBox.height = static_cast<float>(GetScreenHeight() * 0.2);
 }
 
-void Dialogue::SetImage(const Texture2D& imageTexture)
+void Dialogue::CreateImage(const Texture2D& imageTexture)
 {
     container.charImage = imageTexture;
 
