@@ -11,12 +11,18 @@ enum class ContainerPosition
     BottomLeft
 };
 
-
 struct DialogueNode
 {
     std::string character;
     std::string dialogue;
     std::vector<int> nextNodeID; 
+};
+
+struct Container
+{
+    Rectangle contBox;
+    Rectangle textBox;
+    Texture2D charImage;
 };
 
 class Dialogue
@@ -30,17 +36,14 @@ class Dialogue
         bool IsDialogueFinished() const;
         void ProcessInput();
         void SetContainerPosition(ContainerPosition position);
+        void CalculateContainerSize();
     
     private:
         std::vector<DialogueNode> node;
         int currentNodeID;
         bool dialogueFinished;
 
-        Rectangle containerBox;
-        int containerPosX;
-        int containerPosY;
-        int containerSizeX;
-        int containerSizeY;
+        Container container;
 
         template<typename T>
         T clamp(const T& value, const T& minValue, const T& maxValue)
