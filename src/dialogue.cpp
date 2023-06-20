@@ -75,9 +75,9 @@ void Dialogue::SetImage(const Texture2D& imageTexture)
     // Set imageSY to be 83.3% of container
     container.charImage.height = static_cast<float>(container.contBox.height * 0.8333);
 
-    // Set imagePX to be 1.25% of container
-    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.0125);
-    // Set imagePY to be 1.67% of container
-    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.0167);
+    // Set imagePX to be 1.85% of container
+    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.0185);
+    // Set imagePY to be 8.3% of container
+    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.083);
 
 }
