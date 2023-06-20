@@ -140,14 +140,20 @@ void Dialogue::CreateTextbox()
     container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
 }
 
-void Dialogue::DrawDialogueText(const int fontSize)
+void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing)
 {
     // Get current dialogue node
     const DialogueNode &currentNode = node[currentNodeID];
 
+    // Padding
+    const int padding = fontSize + fontSpacing;
+
     // Truncate the dialogue text to fit within the textbox
     std::string dialogueText = removedCharacters + " " + currentNode.dialogue;
-    const float maxLineLength = container.textBox.width - 20.0f;
+    std::vector<std::string> lines;
+
+    const float maxLineLength = container.textBox.width - padding;
+    const int maxLines = static_cast<int>(container.textBox.height / padding);
 
     if (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {
         while (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {

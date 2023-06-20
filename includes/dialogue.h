@@ -55,5 +55,5 @@ class Dialogue
         bool IsDialogueFinished() const;
         void CalculateContainerSize();
         void CreateTextbox();
-        void DrawDialogueText(const int fontSize);
+        void DrawDialogueText(const int fontSize, const int fontSpacing);
 };
