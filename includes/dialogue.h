@@ -42,6 +42,7 @@ class Dialogue
         std::vector<DialogueNode> node;
         int currentNodeID;
         bool dialogueFinished;
+        std::string removedCharacters;
 
         Container container;
 
@@ -54,4 +55,5 @@ class Dialogue
         bool IsDialogueFinished() const;
         void CalculateContainerSize();
         void CreateTextbox();
+        void DrawDialogueText(const int fontSize);
 };

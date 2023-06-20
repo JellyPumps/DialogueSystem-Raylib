@@ -1,8 +1,11 @@
 #include "dialogue.h"
 
 #include "nlohmann/json.hpp"
+#include <cstdio>
+#include <exception>
 #include <fstream>
 #include <iostream>
+#include <raylib.h>
 
 // Constructor
 Dialogue::Dialogue()
@@ -33,7 +36,7 @@ void Dialogue::LoadDialogue(const std::string &filepath)
         std::cerr << "JSON parse error: " << e.what() << "\n";
         exit(1);
     }
-    
+
     for (const auto &[nodeID, nodeData] : jsonData.items()) {
         DialogueNode dnode;
         dnode.character = nodeData["character"];
@@ -134,4 +137,25 @@ void Dialogue::CreateTextbox()
     container.textBox.x = static_cast<float>(container.contBox.width * 0.24);
     // Set textboxPY to be 8.3% of container
     container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
+}
+
+void Dialogue::DrawDialogueText(const int fontSize)
+{
+    // Get current dialogue node
+    const DialogueNode &currentNode = node[currentNodeID];
+
+    // Truncate the dialogue text to fit within the textbox
+    std::string dialogueText = removedCharacters + " " + currentNode.dialogue;
+    const float maxLineLength = container.textBox.width - 20.0f;
+
+    if (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {
+        while (MeasureText(dialogueText.c_str(), fontSize) > maxLineLength) {
+            removedCharacters = dialogueText.substr(dialogueText.length() - 1) + removedCharacters;
+            dialogueText = dialogueText.substr(0, dialogueText.length() - 1);
+        }
+        dialogueText += "...";
+    }
+
+    //Draw truncated dialogue text
+    //TODO: draw text
 }
