@@ -34,10 +34,8 @@ class Dialogue
 
         void LoadDialogue(const std::string &filepath);
         void StartDialogue();
-        bool IsDialogueFinished() const;
         void ProcessInput();
         void SetContainerPosition(ContainerPosition position);
-        void CalculateContainerSize();
         void SetImage(const Texture2D& imageTexture);
     
     private:
@@ -52,4 +50,8 @@ class Dialogue
         {
             return value < minValue ? minValue : (value > maxValue ? maxValue : value);
         }
+
+        bool IsDialogueFinished() const;
+        void CalculateContainerSize();
+        void CreateTextbox();
 };
