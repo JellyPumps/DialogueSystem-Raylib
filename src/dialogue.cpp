@@ -81,3 +81,17 @@ void Dialogue::SetImage(const Texture2D& imageTexture)
     container.imagePosition.x = static_cast<float>(container.contBox.width * 0.083);
 
 }
+
+void Dialogue::CreateTextbox()
+{
+    // Set textboxSX to be 76% of container
+    container.textBox.width = static_cast<float>(container.contBox.width * 0.76);
+    // Set textboxSY to be 83.3% of container
+    container.textBox.height = static_cast<float>(container.contBox.height * 0.8333);
+
+
+    // Set textboxPX to be 24% of container
+    container.textBox.x = static_cast<float>(container.contBox.width * 0.24);
+    // Set textboxPY to be 8.3% of container
+    container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
+}
