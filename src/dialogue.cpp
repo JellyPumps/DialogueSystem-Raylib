@@ -110,7 +110,21 @@ void Dialogue::CalculateContainerSize()
     container.contBox.height = static_cast<float>(GetScreenHeight() * 0.2);
 }
 
-void Dialogue::CreateImage(const Texture2D& imageTexture)
+void Dialogue::CreateContainer(ContainerPosition position, Color colour)
+{
+    SetContainerPosition(position);
+    CalculateContainerSize();
+
+    DrawRectangle(
+        container.contBox.x,
+        container.contBox.y,
+        container.contBox.width,
+        container.contBox.height,
+        colour
+    );
+}
+
+void Dialogue::CreateImage(const Texture2D& imageTexture, Color colour)
 {
     container.charImage = imageTexture;
 
@@ -124,9 +138,15 @@ void Dialogue::CreateImage(const Texture2D& imageTexture)
     // Set imagePY to be 8.3% of container
     container.imagePosition.x = static_cast<float>(container.contBox.width * 0.083);
 
+    DrawTexture(
+        container.charImage,
+        container.imagePosition.x,
+        container.imagePosition.y,
+        colour
+    );
 }
 
-void Dialogue::CreateTextbox()
+void Dialogue::CreateTextbox(Color colour)
 {
     // Set textboxSX to be 76% of container
     container.textBox.width = static_cast<float>(container.contBox.width * 0.76);
@@ -138,6 +158,14 @@ void Dialogue::CreateTextbox()
     container.textBox.x = static_cast<float>(container.contBox.width * 0.24);
     // Set textboxPY to be 8.3% of container
     container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
+
+    DrawRectangle(
+        container.textBox.x,
+        container.textBox.y,
+        container.textBox.width,
+        container.textBox.height,
+        colour
+    );
 }
 
 void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing)

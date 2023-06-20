@@ -53,8 +53,8 @@ class Dialogue
         bool IsDialogueFinished() const;
         void CalculateContainerSize();
         void SetContainerPosition(ContainerPosition position);
-        void CreateContainer(ContainerPosition position);
-        void CreateImage(const Texture2D& imageTexture);
-        void CreateTextbox();
+        void CreateContainer(ContainerPosition position, Color colour);
+        void CreateImage(const Texture2D& imageTexture, Color colour);
+        void CreateTextbox(Color colour);
         void DrawDialogueText(const int fontSize, const int fontSpacing);
 };
