@@ -1,0 +1,21 @@
+{
+    "000": {
+        "character":"Name",
+        "type":"response",
+        "dialogue":"Text",
+        "responses":{
+            "response_text_one":{"next":"001"},
+            "response_text_two":{"next":"002"}
+        }
+    },
+    "001": {
+        "character":"Name",
+        "type":"dialogue",
+        "dialogue":"Text"
+    },
+    "002": {
+        "character":"Name",
+        "type":"dialogue",
+        "dialogue":"Text"
+    }
+}

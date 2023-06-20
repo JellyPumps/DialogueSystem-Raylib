@@ -1,5 +1,8 @@
 #include "dialogue.h"
 
+#include "nlohmann/json.hpp"
+#include <fstream>
+
 // Constructor
 Dialogue::Dialogue()
 {
@@ -12,7 +15,40 @@ Dialogue::~Dialogue() {}
 
 
 // Dialogue Functions
-void Dialogue::LoadDialogue(const std::string &filepath) {}
+void Dialogue::LoadDialogue(const std::string &filepath)
+{
+    // Read JSON dialogue file
+    std::ifstream jsdaFile(filepath);
+    if (!jsdaFile.is_open()) { return; } // TODO: Add proper error handling
+
+    nlohmann::json jsonData;
+
+    try { jsdaFile >> jsonData; }
+    catch (const nlohmann::json::parse_error &e)
+    {
+        jsdaFile.close();
+        return;
+    } // TODO: Add proper error handling
+
+    for (const auto &[nodeID, nodeData] : jsonData.items()) {
+        DialogueNode dnode;
+        dnode.character = nodeData["character"];
+        dnode.dialogue = nodeData["dialogue"];
+
+        // Check if node contains repsonses
+        if (nodeData.find("responses") != nodeData.end()) {
+            for (const auto &[responseText, response] : nodeData["responses"].items()) {
+                std::string nextNodeID = response["next"];
+                dnode.nextNodeID.push_back(std::stoi(nextNodeID));
+            }
+        }
+
+        // Add dialogue to vector
+        node.push_back(dnode);
+    }
+
+    jsdaFile.close();
+}
 
 void Dialogue::StartDialogue()
 {
