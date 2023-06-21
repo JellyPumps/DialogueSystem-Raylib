@@ -113,9 +113,9 @@ void Dialogue::SetImage(const Texture2D& imageTexture) {
     container.charImage.height = static_cast<int>(container.contBox.height * 0.8333);
 
     // Set imagePX to be 1.85% of container
-    container.imagePosition.x = static_cast<int>(container.contBox.width * 0.0185);
+    container.imagePosition.x = static_cast<int>(GetScreenWidth() - ((container.contBox.width * 0.0185) + container.charImage.width));
     // Set imagePY to be 8.3% of container
-    container.imagePosition.x = static_cast<int>(container.contBox.width * 0.083);
+    container.imagePosition.x = static_cast<int>(GetScreenHeight() - ((container.contBox.width * 0.083) + container.charImage.height));
 }
 
 void Dialogue::SetTextbox() {
@@ -126,11 +126,12 @@ void Dialogue::SetTextbox() {
 
 
     // Set textboxPX to be 24% of container
-    container.textBox.x = static_cast<int>(container.contBox.width * 0.24);
+    container.textBox.x = static_cast<int>(GetScreenWidth() - ((container.contBox.width * 0.24) + container.textBox.width));
     // Set textboxPY to be 8.3% of container
-    container.textBox.y = static_cast<int>(container.contBox.height * 0.083);
+    container.textBox.y = static_cast<int>(GetScreenHeight() - ((container.contBox.height * 0.083) + container.textBox.height));
 
     std::cerr << container.textBox.x << ", " << container.textBox.y << "\n";
+    std::cerr << container.textBox.width << ", " << container.textBox.height << "\n";
 }
 
 void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
