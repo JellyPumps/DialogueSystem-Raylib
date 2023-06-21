@@ -99,36 +99,38 @@ void Dialogue::SetContainerPosition(ContainerPosition position) {
 
 void Dialogue::CalculateContainerSize() {
     // Set containerSX to be 67.5% of the screen width
-    container.contBox.width = static_cast<float>(GetScreenWidth() * 0.675);
+    container.contBox.width = static_cast<int>(GetScreenWidth() * 0.675);
     // Set containerSY to be 20% of the screen height
-    container.contBox.height = static_cast<float>(GetScreenHeight() * 0.2);
+    container.contBox.height = static_cast<int>(GetScreenHeight() * 0.2);
 }
 
 void Dialogue::SetImage(const Texture2D& imageTexture) {
     container.charImage = imageTexture;
 
     // Set imageSX to be 18.52% of container
-    container.charImage.width = static_cast<float>(container.contBox.width * 0.1852);
+    container.charImage.width = static_cast<int>(container.contBox.width * 0.1852);
     // Set imageSY to be 83.3% of container
-    container.charImage.height = static_cast<float>(container.contBox.height * 0.8333);
+    container.charImage.height = static_cast<int>(container.contBox.height * 0.8333);
 
     // Set imagePX to be 1.85% of container
-    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.0185);
+    container.imagePosition.x = static_cast<int>(container.contBox.width * 0.0185);
     // Set imagePY to be 8.3% of container
-    container.imagePosition.x = static_cast<float>(container.contBox.width * 0.083);
+    container.imagePosition.x = static_cast<int>(container.contBox.width * 0.083);
 }
 
 void Dialogue::SetTextbox() {
     // Set textboxSX to be 76% of container
-    container.textBox.width = static_cast<float>(container.contBox.width * 0.76);
+    container.textBox.width = static_cast<int>(container.contBox.width * 0.76);
     // Set textboxSY to be 83.3% of container
-    container.textBox.height = static_cast<float>(container.contBox.height * 0.8333);
+    container.textBox.height = static_cast<int>(container.contBox.height * 0.8333);
 
 
     // Set textboxPX to be 24% of container
-    container.textBox.x = static_cast<float>(container.contBox.width * 0.24);
+    container.textBox.x = static_cast<int>(container.contBox.width * 0.24);
     // Set textboxPY to be 8.3% of container
-    container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
+    container.textBox.y = static_cast<int>(container.contBox.height * 0.083);
+
+    std::cerr << container.textBox.x << ", " << container.textBox.y << "\n";
 }
 
 void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
