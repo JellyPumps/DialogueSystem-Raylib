@@ -8,8 +8,7 @@
 #include <raylib.h>
 
 // Constructor
-Dialogue::Dialogue()
-{
+Dialogue::Dialogue() {
     currentNodeID   = -1;
     dialogueFinished= false;
     removedCharacters = "";
@@ -156,4 +155,26 @@ void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
 
     //Draw truncated dialogue text
     //TODO: draw text
+}
+
+void Dialogue::CreateDialogueBox(Color outline, Color textbox, Color imageTint) {
+
+    // Container
+    DrawRectangle(
+        container.contBox.x,
+        container.contBox.y,
+        container.contBox.width,
+        container.contBox.height,
+        outline
+    );
+
+    // Textbox
+    DrawRectangle(
+        container.textBox.x,
+        container.textBox.y,
+        container.textBox.width,
+        container.textBox.height,
+        textbox
+    );
+
 }
