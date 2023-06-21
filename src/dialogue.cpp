@@ -20,8 +20,7 @@ Dialogue::~Dialogue() {}
 
 
 // Dialogue Functions
-void Dialogue::LoadDialogue(const std::string &filepath)
-{
+void Dialogue::LoadDialogue(const std::string &filepath) {
     // Read JSON dialogue file
     std::ifstream jsdaFile(filepath);
     if (!jsdaFile.fail()) {
@@ -58,21 +57,18 @@ void Dialogue::LoadDialogue(const std::string &filepath)
     jsdaFile.close();
 }
 
-void Dialogue::StartDialogue()
-{
+void Dialogue::StartDialogue() {
     currentNodeID = 0;
     dialogueFinished = false;
 }
 
-bool Dialogue::IsDialogueFinished() const
-{
+bool Dialogue::IsDialogueFinished() const {
     return dialogueFinished;
 }
 
 void Dialogue::ProcessInput() {}
 
-void Dialogue::SetContainerPosition(ContainerPosition position)
-{
+void Dialogue::SetContainerPosition(ContainerPosition position) {
     // Creates X & Y padding using 6.25% of screen size
     int paddingX = static_cast<int>(GetScreenWidth() * 0.0625);
     int paddingY = static_cast<int>(GetScreenHeight() * 0.0625);
@@ -102,30 +98,14 @@ void Dialogue::SetContainerPosition(ContainerPosition position)
     );
 }
 
-void Dialogue::CalculateContainerSize()
-{
+void Dialogue::CalculateContainerSize() {
     // Set containerSX to be 67.5% of the screen width
     container.contBox.width = static_cast<float>(GetScreenWidth() * 0.675);
     // Set containerSY to be 20% of the screen height
     container.contBox.height = static_cast<float>(GetScreenHeight() * 0.2);
 }
 
-void Dialogue::CreateContainer(ContainerPosition position, Color colour)
-{
-    SetContainerPosition(position);
-    CalculateContainerSize();
-
-    DrawRectangle(
-        container.contBox.x,
-        container.contBox.y,
-        container.contBox.width,
-        container.contBox.height,
-        colour
-    );
-}
-
-void Dialogue::CreateImage(const Texture2D& imageTexture, Color colour)
-{
+void Dialogue::SetImage(const Texture2D& imageTexture) {
     container.charImage = imageTexture;
 
     // Set imageSX to be 18.52% of container
@@ -137,17 +117,9 @@ void Dialogue::CreateImage(const Texture2D& imageTexture, Color colour)
     container.imagePosition.x = static_cast<float>(container.contBox.width * 0.0185);
     // Set imagePY to be 8.3% of container
     container.imagePosition.x = static_cast<float>(container.contBox.width * 0.083);
-
-    DrawTexture(
-        container.charImage,
-        container.imagePosition.x,
-        container.imagePosition.y,
-        colour
-    );
 }
 
-void Dialogue::CreateTextbox(Color colour)
-{
+void Dialogue::SetTextbox() {
     // Set textboxSX to be 76% of container
     container.textBox.width = static_cast<float>(container.contBox.width * 0.76);
     // Set textboxSY to be 83.3% of container
@@ -158,18 +130,9 @@ void Dialogue::CreateTextbox(Color colour)
     container.textBox.x = static_cast<float>(container.contBox.width * 0.24);
     // Set textboxPY to be 8.3% of container
     container.textBox.y = static_cast<float>(container.contBox.height * 0.083);
-
-    DrawRectangle(
-        container.textBox.x,
-        container.textBox.y,
-        container.textBox.width,
-        container.textBox.height,
-        colour
-    );
 }
 
-void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing)
-{
+void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
     // Get current dialogue node
     const DialogueNode &currentNode = node[currentNodeID];
 
