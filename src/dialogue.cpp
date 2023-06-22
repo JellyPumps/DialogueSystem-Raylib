@@ -193,12 +193,11 @@ void Dialogue::CreateDialogueBox(Color outline, Color textbox, Color imageTint) 
         textbox
     );
 
-    // TESTING PURPOSES ONLY -- Image
-    DrawRectangle(
+    // Image
+    DrawTexture(
+        container.charImage,
         container.imagePosition.x,
         container.imagePosition.y,
-        container.charImage.width,
-        container.charImage.height,
         imageTint
     );
 }
