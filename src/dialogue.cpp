@@ -24,7 +24,7 @@ void Dialogue::LoadDialogue(const std::string &filepath) {
     // Read JSON dialogue file
     std::ifstream jsdaFile(filepath);
     if (!jsdaFile.fail()) {
-        std::cerr << filepath << "was not successfully opened.\n Please check that the file currently exists.\n";
+        std::cerr << filepath << " was not successfully opened.\n Please check that the file currently exists.\n";
         exit(1);
     }
 
