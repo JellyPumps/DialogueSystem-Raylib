@@ -130,16 +130,16 @@ void Dialogue::SetImage(const Texture2D& imageTexture) {
 }
 
 void Dialogue::SetTextbox() {
-    // Set textboxSX to be 76% of container
-    container.textBox.width = static_cast<float>(container.contBox.width * 0.76);
+    // Set textboxSX to be 74% of container
+    container.textBox.width = static_cast<float>(container.contBox.width * 0.74);
     // Set textboxSY to be 83.3% of container
     container.textBox.height = static_cast<float>(container.contBox.height * 0.8333);
 
 
     // Set textboxPX to be 24% of container
-    container.textBox.x = static_cast<float>(GetScreenWidth() - ((container.contBox.width * 0.24) + container.textBox.width));
+    container.textBox.x = static_cast<float>((container.contBox.width * 0.24) + container.contBox.x);
     // Set textboxPY to be 8.3% of container
-    container.textBox.y = static_cast<float>(GetScreenHeight() - ((container.contBox.height * 0.083) + container.textBox.height));
+    container.textBox.y = static_cast<float>((container.contBox.height * 0.083) + container.contBox.y);
 
     container.textBox.width = std::round(container.textBox.width);
     container.textBox.height = std::round(container.textBox.height);
