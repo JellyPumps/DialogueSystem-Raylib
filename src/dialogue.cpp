@@ -117,9 +117,9 @@ void Dialogue::SetImage(const Texture2D& imageTexture) {
     container.charImage.height = static_cast<float>(container.contBox.height * 0.8333);
 
     // Set imagePX to be 1.85% of container
-    container.imagePosition.x = static_cast<float>((container.contBox.width * 0.0185) + container.charImage.width);
+    container.imagePosition.x = static_cast<float>((container.contBox.width * 0.0185) + container.contBox.x);
     // Set imagePY to be 8.3% of container
-    container.imagePosition.y = static_cast<float>(GetScreenHeight() - ((container.contBox.height * 0.083) + container.charImage.height));
+    container.imagePosition.y = static_cast<float>((container.contBox.height * 0.083) + container.contBox.y);
     
     container.charImage.width = std::round(container.charImage.width);
     container.charImage.height = std::round(container.charImage.height);
