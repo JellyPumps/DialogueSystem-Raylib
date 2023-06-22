@@ -125,8 +125,6 @@ void Dialogue::SetImage(const Texture2D& imageTexture) {
     container.charImage.height = std::round(container.charImage.height);
     container.imagePosition.x = std::round(container.imagePosition.x);
     container.imagePosition.y = std::round(container.imagePosition.y);
-
-    std::cerr << container.imagePosition.x << ", " << container.imagePosition.y << "\n";
 }
 
 void Dialogue::SetTextbox() {
