@@ -175,7 +175,7 @@ void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
         dialogueText.c_str(),
         container.textBox.x,
         container.textBox.y,
-        16,
+        fontSize,
         WHITE
     );
 }
