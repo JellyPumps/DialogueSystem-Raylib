@@ -48,6 +48,9 @@ void Dialogue::LoadDialogue(const std::string &filepath) {
                 std::string nextNodeID = response["next"];
                 dnode.nextNodeID.push_back(std::stoi(nextNodeID));
             }
+        } else {
+            std::string nextNodeID = nodeData["next"];
+            dnode.nextNodeID.push_back(std::stoi(nextNodeID));
         }
 
         // Add dialogue to vector
