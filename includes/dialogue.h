@@ -41,6 +41,8 @@ class Dialogue
         void SetTextbox();
         void SetImage(const Texture2D &imageTexture);
         void CreateDialogueBox(Color outline, Color textbox, Color imageTint);
+        void DrawDialogueText(const int fontSize, const int fontSpacing);
+        bool IsDialogueFinished() const;
 
         void DialogueNodePrint();
     
@@ -57,7 +59,4 @@ class Dialogue
         {
             return value < minValue ? minValue : (value > maxValue ? maxValue : value);
         }
-
-        bool IsDialogueFinished() const;
-        void DrawDialogueText(const int fontSize, const int fontSpacing);
 };

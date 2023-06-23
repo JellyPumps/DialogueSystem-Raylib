@@ -171,7 +171,13 @@ void Dialogue::DrawDialogueText(const int fontSize, const int fontSpacing) {
     } else { removedCharacters.clear(); }
 
     //Draw truncated dialogue text
-    //TODO: draw text
+    DrawText(
+        dialogueText.c_str(),
+        container.textBox.x,
+        container.textBox.y,
+        16,
+        WHITE
+    );
 }
 
 void Dialogue::CreateDialogueBox(Color outline, Color textbox, Color imageTint) {
