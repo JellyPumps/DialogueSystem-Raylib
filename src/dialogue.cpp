@@ -202,3 +202,9 @@ void Dialogue::CreateDialogueBox(Color outline, Color textbox, Color imageTint) 
         imageTint
     );
 }
+
+void Dialogue::DialogueNodePrint() {
+    for (auto i = node.begin(); i != node.end(); i++) {
+        std::cout << i->character << ": " << i->dialogue << "\n";
+    }
+}

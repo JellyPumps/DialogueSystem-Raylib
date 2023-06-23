@@ -41,6 +41,8 @@ class Dialogue
         void SetTextbox();
         void SetImage(const Texture2D &imageTexture);
         void CreateDialogueBox(Color outline, Color textbox, Color imageTint);
+
+        void DialogueNodePrint();
     
     private:
         std::vector<DialogueNode> node;
